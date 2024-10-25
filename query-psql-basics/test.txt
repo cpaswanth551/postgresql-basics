@@ -1,0 +1,38 @@
+
+
+select * from studenttb order by name; -- in ascending order query 
+
+select * from studenttb order by name desc;  --  desc order query 
+
+
+select name from studenttb limit 2;  --- query for  name and limit of 2
+
+
+select * from studenttb offset 2; --- query for skiping first two rows .
+
+
+select * from studenttb where id = 2; --- filter the student with id 2 
+
+select * from studenttb where id = 2 or name = 'sanjay'; --- query the student with id = 2 or name = sanjay  -- here values with id with 2 or name with sanjay will apper
+
+
+select * from studenttb where id = 2 and name = 'sanjay';  -- query the studenth with id 2 and sanjay so the both conditon should happen
+
+select name as student_name, std as standard from student;  -- alias then this will give a alias name for the column 
+
+
+select distinct std from student;  -- give a distinct column values by removing duplicate in the col.
+
+select * from student where std::integer between 1 and 10;   -- querying between 1 and 10
+
+select name from student where id < 10 fetch first 4 row only;  -- fetch first 5 rows .
+
+select * from student where id <> 10;   -- not equal to
+
+
+select name from student where name in ('rajan' , 'pradep')  - in cluase
+
+select name from student where name not in ('rajan' , 'pradep') - not in 
+
+
+select name from student where name like '_s%';  '_ ' (wildcard) means - first letter can be anything but second letter should be s , '%' (wild card) - means can have more then 0 characters ,
