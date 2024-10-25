@@ -1,0 +1,27 @@
+select std from student group by std;   --- grouping the data by std 
+
+select std, count(*) from student group by std order by std desc;   -- gets group data with aggregate function of count
+
+
+SELECT std, AVG(marks) AS avg_marks FROM studenttb GROUP BY std;  -- Geting avg mark of student in each stand 
+
+SELECT std, MAX(marks) AS max_marks FROM studenttb GROUP BY std;  -- Geting max mark of student in each stand 
+
+SELECT std, COUNT(marks) AS count_students FROM studenttb GROUP BY std HAVING COUNT(*)>1;  -- Geting count  of student > 1
+
+
+# --- MULTIPLE TABLE 
+
+#  case 1 - Number of Subjects per Student
+SELECT s.name, count(sub.student_id) AS avg_marks
+FROM studenttb s 
+JOIN subjecttb sub ON s.id = sub.student_id   
+GROUP BY name;
+
+#  case2 - Query to Find Students with More Than One Subject (Including Marks)
+SELECT s.name,sub.subject, sub.mark AS total_mark FROM studenttb s 
+JOIN subjecttb sub ON s.id = sub.student_id WHERE 
+s.id IN 
+(select student_id from subjecttb 
+group by student_id having count(subject)>1
+);
