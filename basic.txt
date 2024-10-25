@@ -1,0 +1,46 @@
+# sql basics 
+
+# create a table ....
+create table studentTB(id serial primary key,name varchar(50) not null,address varchar(350));
+
+
+# for insert in table ... 
+insert into studenttb(name,address) values ('aswanth','address here');
+
+
+
+select * from studenttb order by name; -- in ascending order query 
+
+select * from studenttb order by name desc;  --  desc order query 
+
+
+select name from studenttb limit 2;  --- query for  name and limit of 2
+
+
+select * from studenttb offset 2; --- query for skiping first two rows .
+
+
+select * from studenttb where id = 2; --- filter the student with id 2 
+
+select * from studenttb where id = 2 or name = 'sanjay'; --- query the student with id = 2 or name = sanjay  -- here values with id with 2 or name with sanjay will apper
+
+
+select * from studenttb where id = 2 and name = 'sanjay';  -- query the studenth with id 2 and sanjay so the both conditon should happen
+
+
+alter table studenttb add std integer; -- addding new column to a table.
+
+
+update studenttb set std = '5';  --- updating a value of column in table
+
+
+update studenttb set std = '12' where id = '2'; -- change  the value of specific row  with table .
+
+
+truncate table studenttb;  -- delete the values of table but keeps the table structure.
+
+
+delete from  studenttb; -- delete the vlaue  same as truncate
+
+
+drop table studenttb;  -- delete the table form the database dont left any thing.
