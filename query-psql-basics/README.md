@@ -154,6 +154,38 @@ SELECT name FROM student WHERE name LIKE '_s%';
 
 ---
 
+
+---
+
+## Query: Select Customers Excluding Specific Referee
+
+```sql
+SELECT name FROM Customer 
+WHERE COALESCE(referee_id, 0) <> 2;
+```
+
+### Explanation:
+This query retrieves the `name` of customers from the `Customer` table **excluding those whose `referee_id` is 2**. 
+
+- **`COALESCE(referee_id, 0)`**:  
+  - The `COALESCE` function returns the first non-`NULL` value from its arguments.  
+  - If the `referee_id` is `NULL` for a customer, the query substitutes it with `0`.
+
+- **Condition `<> 2`**:  
+  - The query filters out all customers where the `referee_id` is `2`.
+  - If `referee_id` is `NULL` (treated as `0` by `COALESCE`), these rows are also included in the result because `0 <> 2`.
+
+### Example Scenario:
+- Customer 1: `referee_id = 2` → Excluded  
+- Customer 2: `referee_id = NULL` → Included (interpreted as 0)  
+- Customer 3: `referee_id = 3` → Included  
+
+This query ensures that customers who either have no `referee_id` or a different referee (other than 2) are part of the result.
+
+
+
+---
+
 ## Practical Usage
 
 - **`ORDER BY`** is useful for **sorting** student names alphabetically or by score.
